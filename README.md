@@ -1,6 +1,6 @@
-# Git All repos
+# Git All Repos
 
-Python script to download all repositories from a user or organization.
+Python script to clone all repositories from a user or organization on Github.
 
 ## Usage
 
