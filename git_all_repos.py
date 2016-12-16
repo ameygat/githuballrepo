@@ -27,14 +27,14 @@ def get_total_repos(group, name):
 def clone_repos(all_repos):
     print('Cloning...')
     for repo in all_repos:
-        os.system('Git clone ' + repo['clone_url'])
+        os.system('Git clone ' + repo)
 
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
         total = get_total_repos(sys.argv[1], sys.argv[2])
         if total:
-            clone_repos(total[0])
+            clone_repos(total)
 
     else:
         print('Usage: python USERS_OR_ORG GITHUB-USER_OR_ORG-NAME')
