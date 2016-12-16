@@ -37,4 +37,4 @@ if __name__ == '__main__':
             clone_repos(total)
 
     else:
-        print('Usage: python USERS_OR_ORG GITHUB-USER_OR_ORG-NAME')
+        print('Usage: python USERS_OR_ORG GITHUB_USER_OR_ORG-NAME')
