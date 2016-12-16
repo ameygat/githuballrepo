@@ -1,6 +1,6 @@
 # Git All Repos
 
-Python script to clone all repositories from a user or organization on Github.
+Python script to clone all repositories from a public user or organization on Github.
 
 ## Usage
 
