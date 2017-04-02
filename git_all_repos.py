@@ -26,9 +26,12 @@ def get_total_repos(group, name):
 
 def clone_repos(all_repos):
     print('Cloning...')
+    counter = 1 
+    total = str(len(all_repos))
     for repo in all_repos:
-        os.system('Git clone ' + repo)
-
+        print ('\nRepository ' + str(counter) + ' of ' + total + '\n' )
+        os.system('git clone ' + repo)
+        counter = counter + 1
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
