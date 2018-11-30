@@ -3,12 +3,17 @@ import os
 import requests
 
 
-def get_total_repos(group, name):
+def get_total_repos(group, name,github_token=""):
     repo_urls = []
     page = 1
     while True:
-        url = 'https://api.github.com/{0}/{1}/repos?per_page=100&page={2}'
-        r = requests.get(url.format(group, name, page))
+        if github_token =="":
+            url = 'https://api.github.com/{0}/{1}/repos?per_page=100&page={2}'
+            r = requests.get(url.format(group, name, page))
+        else:
+            url = 'https://api.github.com/{0}/{1}/repos?per_page=100&page={2}&access_token={3}'
+            r = requests.get(url.format(group, name, page,github_token))
+            
         if r.status_code == 200:
             rdata = r.json()
             for repo in rdata:
@@ -34,10 +39,13 @@ def clone_repos(all_repos):
         counter = counter + 1
 
 if __name__ == '__main__':
+    if len(sys.argv) > 3:
+        total = get_total_repos(sys.argv[1], sys.argv[2],sys.argv[3])
+        if total:
+            clone_repos(total)
     if len(sys.argv) > 2:
         total = get_total_repos(sys.argv[1], sys.argv[2])
         if total:
             clone_repos(total)
-
     else:
-        print('Usage: python USERS_OR_ORG GITHUB_USER_OR_ORG-NAME')
+        print('Usage: python USERS_OR_ORG GITHUB_USER_OR_ORG-NAME [GIT_TOKEN]')
